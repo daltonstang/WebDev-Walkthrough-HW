@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>How to Fly Fish – Trail Guide</title>
+    <style>
+        /* ===== Base Styles ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #1d3a3a 0%, #0b1416 60%, #050809 100%);
+            color: #f4f7f5;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 4rem;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: #a4e6c0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Layout ===== */
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+        }
+
+        header {
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg,
+                    rgba(6, 34, 34, 0.96),
+                    rgba(12, 48, 34, 0.96)),
+                url("https://images.pexels.com/photos/2403205/pexels-photo-2403205.jpeg") center/cover no-repeat;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-kicker {
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #b2d6c1;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 3vw + 1.5rem, 3.1rem);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-subtitle {
+            color: #dbeee5;
+            max-width: 480px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-tagline {
+            font-size: 0.92rem;
+            color: #c6dfd1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .btn-primary,
+        .btn-ghost {
+            padding: 0.7rem 1.3rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2f855a, #38a169);
+            color: #f5fff8;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            background: rgba(3, 19, 19, 0.75);
+            border-color: rgba(152, 230, 184, 0.4);
+            color: #c3f2d2;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(8, 35, 35, 0.9);
+        }
+
+        .hero-meta {
+            margin-top: 1.4rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #b2d6c1;
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(160, 202, 176, 0.35);
+        }
+
+        .hero-meta-emoji {
+            font-size: 1.1rem;
+        }
+
+        /* ===== Trail Nav ===== */
+        .trail-nav {
+            position: sticky;
+            top: 0.4rem;
+            z-index: 5;
+            margin-top: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 999px;
+            background: linear-gradient(120deg, rgba(3, 18, 18, 0.96), rgba(8, 31, 24, 0.96));
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(141, 194, 163, 0.35);
+            backdrop-filter: blur(14px);
+        }
+
+        .trail-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 0.25rem;
+            scrollbar-width: thin;
+        }
+
+        .trail-nav a {
+            font-size: 0.82rem;
+            white-space: nowrap;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: transparent;
+            border: 1px solid transparent;
+            color: #d7f8e2;
+            transition: background 0.2s, transform 0.1s, border 0.2s;
+        }
+
+        .trail-nav a span {
+            font-size: 1.05rem;
+        }
+
+        .trail-nav a:hover {
+            background: rgba(22, 101, 52, 0.4);
+            border-color: rgba(152, 230, 184, 0.5);
+            transform: translateY(-1px);
+        }
+
+        /* ===== Sections ===== */
+        main {
+            margin-top: 2rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        section {
+            border-radius: 1.25rem;
+            padding: 1.8rem 1.6rem;
+            background: radial-gradient(circle at top left, #152624 0, #050b0c 55%);
+            border: 1px solid rgba(133, 176, 150, 0.2);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(75, 151, 102, 0.14), transparent 55%);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        section>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        section h2 span {
+            font-size: 1.4rem;
+        }
+
+        .section-tagline {
+            font-size: 0.9rem;
+            color: #b8d8c4;
+            margin-bottom: 1.1rem;
+        }
+
+        /* ===== Quick Steps ===== */
+        .steps-list {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .steps-list li {
+            list-style: none;
+            padding: 0.7rem 0.9rem 0.7rem 2.3rem;
+            border-radius: 0.9rem;
+            background: rgba(1, 9, 9, 0.8);
+            border: 1px solid rgba(149, 199, 167, 0.3);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border 0.15s ease-out;
+        }
+
+        .steps-list li::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0.7rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.1rem;
+            height: 1.1rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #48bb78, #2f855a);
+            color: #02110d;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 3px rgba(35, 92, 64, 0.8);
+        }
+
+        .steps-list li strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+            color: #ecfff5;
+        }
+
+        .steps-list li small {
+            font-size: 0.82rem;
+            color: #c0dfcf;
+        }
+
+        .steps-list li:hover {
+            transform: translateY(-2px);
+            border-color: rgba(179, 241, 202, 0.7);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+        }
+
+        .step-tip {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #c0dfcf;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.7rem;
+            background: rgba(4, 16, 14, 0.9);
+            border-radius: 999px;
+            border: 1px dashed rgba(152, 230, 184, 0.4);
+        }
+
+        /* ===== Trail Map (Clickable Cards) ===== */
+        .trail-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 0.9rem;
+            margin-top: 0.6rem;
+        }
+
+        .trail-card {
+            display: block;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: radial-gradient(circle at top, #0d1b19, #040807 60%);
+            border: 1px solid rgba(123, 169, 142, 0.35);
+            min-height: 120px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.18s ease-out, box-shadow 0.18s ease-out,
+                border 0.18s ease-out, background 0.18s ease-out;
+        }
+
+        .trail-card:hover {
+            transform: translateY(-3px) scale(1.01);
+            border-color: rgba(189, 243, 210, 0.8);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
+            background: radial-gradient(circle at top, #16332d, #050b0a 60%);
+        }
+
+        .trail-card h3 {
+            font-size: 0.98rem;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .trail-card h3 span {
+            font-size: 1.3rem;
+        }
+
+        .trail-card p {
+            font-size: 0.82rem;
+            color: #c0dfcf;
+            max-width: 260px;
+        }
+
+        .badge {
+            position: absolute;
+            right: 0.8rem;
+            top: 0.7rem;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(12, 35, 30, 0.9);
+            border: 1px solid rgba(160, 211, 182, 0.6);
+            color: #d1f7de;
+        }
+
+        /* ===== Two Column Layout (Gear + Knots, Casting + Water) ===== */
+        .two-col {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 800px) {
+            .two-col {
+                grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            }
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .chip {
+            font-size: 0.78rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(143, 195, 162, 0.6);
+            background: rgba(6, 25, 22, 0.95);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #c7e3d3;
+        }
+
+        .chip span {
+            font-size: 1rem;
+        }
+
+        ul.checklist {
+            margin-left: 1.2rem;
+            font-size: 0.9rem;
+            color: #d8f3e4;
+        }
+
+        ul.checklist li {
+            margin-bottom: 0.35rem;
+            position: relative;
+        }
+
+        ul.checklist li::marker {
+            color: #7fd3a7;
+        }
+
+        .sub-note {
+            font-size: 0.8rem;
+            color: #a9cdb8;
+            margin-top: 0.45rem;
+        }
+
+        .note-box {
+            margin-top: 0.9rem;
+            padding: 0.7rem 0.8rem;
+            border-radius: 0.9rem;
+            border: 1px dashed rgba(152, 230, 184, 0.5);
+            background: rgba(4, 14, 12, 0.95);
+            font-size: 0.82rem;
+            color: #c4e4d2;
+        }
+
+        .note-box strong {
+            color: #e5ffef;
+        }
+
+        /* ===== Practice Timeline ===== */
+        .timeline {
+            margin-top: 0.8rem;
+            border-left: 2px solid rgba(138, 188, 159, 0.7);
+            padding-left: 1.2rem;
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .timeline-step {
+            position: relative;
+        }
+
+        .timeline-step::before {
+            content: "";
+            position: absolute;
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 50%;
+            background: #48bb78;
+            border: 2px solid #0b1b16;
+            left: -1.55rem;
+            top: 0.25rem;
+            box-shadow: 0 0 0 4px rgba(85, 180, 121, 0.4);
+        }
+
+        .timeline-step h3 {
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .timeline-step p {
+            font-size: 0.84rem;
+            color: #c0dfcf;
+        }
+
+        .time-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            margin-top: 0.15rem;
+            color: #d4f5e0;
+        }
+
+        /* ===== Resources Section ===== */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 0.85rem;
+            margin: 0.7rem 0 0.1rem;
+        }
+
+        .resource-card {
+            border-radius: 1rem;
+            padding: 0.75rem 0.85rem;
+            background: rgba(5, 17, 15, 0.96);
+            border: 1px solid rgba(129, 179, 150, 0.45);
+            font-size: 0.82rem;
+        }
+
+        .resource-card h3 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .resource-card h3 span {
+            font-size: 1.1rem;
+        }
+
+        .resource-links {
+            margin-top: 0.3rem;
+            display: grid;
+            gap: 0.25rem;
+        }
+
+        .resource-links a {
+            font-size: 0.82rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.4rem;
+            border-radius: 0.5rem;
+            background: rgba(4, 25, 20, 0.9);
+            border: 1px solid transparent;
+        }
+
+        .resource-links a:hover {
+            border-color: rgba(179, 241, 202, 0.8);
+            text-decoration: none;
+        }
+
+        .resource-links small {
+            opacity: 0.85;
+            font-size: 0.76rem;
+        }
+
+        /* ===== Footer / Outro ===== */
+        footer {
+            margin-top: 2.1rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #a6c8b3;
+        }
+
+        footer span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        footer span::before,
+        footer span::after {
+            content: "";
+            width: 38px;
+            height: 1px;
+            background: linear-gradient(to right,
+                    transparent,
+                    rgba(140, 190, 159, 0.8),
+                    transparent);
+        }
+
+        /* Small screens tweaks */
+        @media (max-width: 600px) {
+            header {
+                padding: 2rem 1.35rem 1.7rem;
+            }
+
+            .hero-meta {
+                gap: 0.6rem;
+            }
+
+            .trail-nav {
+                border-radius: 1rem;
+            }
+
+            section {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .trail-map {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <iframe src=https://www.churchofjesuschrist.org/?lang=eng width="700" height="500"></iframe>
+    <div class="page">
+        <!-- HERO -->
+        <header>
+            <div class="hero-content">
+                <div class="hero-kicker">Fly Fishing Trail Guide</div>
+                <h1>How to Fly Fish in Mountain Streams</h1>
+                <p class="hero-subtitle">
+                    A beginner-friendly, forest-themed guide to get you from total rookie
+                    to making your first trout rise.
+                </p>
+                <p class="hero-tagline">
+                    Think of this page like a trail map: follow the markers, click the
+                    signs, and you’ll be wading your first river with confidence.
+                </p>
+                <div class="hero-actions">
+                    <a href="#steps" class="btn-primary">
+                        <span>🎣</span>
+                        <span>Start with the quick steps</span>
+                    </a>
+                    <a href="#trail-map" class="btn-ghost">
+                        <span>🗺️</span>
+                        <span>Jump to the trail map</span>
+                    </a>
+                </div>
+                <div class="hero-meta">
+                    <span>
+                        <span class="hero-meta-emoji">⛰️</span>
+                        <span>Best for: rivers & mountain streams</span>
+                    </span>
+                    <span>
+                        <span class="hero-meta-emoji">⭐</span>
+                        <span>Level: Beginner – Day 1 friendly</span>
+                    </span>
+                    <span>
+                        <span class="hero-meta-emoji">⏱️</span>
+                        <span>Time to read: ~8 minutes</span>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- TRAIL NAV (CLICKABLE AREAS TO CONTENT) -->
+        <nav class="trail-nav">
+            <ul>
+                <li><a href="#steps"><span>🥾</span>Quick Steps</a></li>
+                <li><a href="#trail-map"><span>🗺️</span>Trail Map</a></li>
+                <li><a href="#gear"><span>🎒</span>Gear</a></li>
+                <li><a href="#casting"><span>🌀</span>Casting</a></li>
+                <li><a href="#water-reading"><span>🌊</span>Reading Water</a></li>
+                <li><a href="#practice-plan"><span>📆</span>Practice Plan</a></li>
+                <li><a href="#resources"><span>📚</span>Extra Resources</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- STEP LIST -->
+            <section id="steps">
+                <h2><span>🥾</span>Trailhead: Quick Start Steps</h2>
+                <p class="section-tagline">
+                    Follow these in order. Each step is clickable and will jump you to the right
+                    part of the trail.
+                </p>
+
+                <ul class="steps-list">
+                    <li data-step="1" onclick="location.href='#gear'">
+                        <strong>Gather your basic fly fishing gear.</strong>
+                        <small>
+                            Rod, reel, line, leader, a small box of flies, and
+                            waders if it’s cold.
+                        </small>
+                    </li>
+                    <li data-step="2" onclick="location.href='#knots'">
+                        <strong>Learn 1–2 simple knots.</strong>
+                        <small>
+                            The improved clinch knot and the loop-to-loop connection can take
+                            you from line to fly.
+                        </small>
+                    </li>
+                    <li data-step="3" onclick="location.href='#casting'">
+                        <strong>Practice your basic cast on grass.</strong>
+                        <small>
+                            No water needed. Focus on smooth, relaxed strokes and tight loops.
+                        </small>
+                    </li>
+                    <li data-step="4" onclick="location.href='#water-reading'">
+                        <strong>Learn to “read” the river.</strong>
+                        <small>
+                            Find likely trout spots: seams, riffles, and slower pockets
+                            behind rocks.
+                        </small>
+                    </li>
+                    <li data-step="5" onclick="location.href='#practice-plan'">
+                        <strong>Run a simple on-the-water routine.</strong>
+                        <small>
+                            Approach quietly, cast, drift, adjust, and move methodically up
+                            the river.
+                        </small>
+                    </li>
+                    <li data-step="6" onclick="location.href='#resources'">
+                        <strong>Keep learning with a few curated resources.</strong>
+                        <small>
+                            Short videos, printable checklists, and river-etiquette refreshers.
+                        </small>
+                    </li>
+                </ul>
+
+                <div class="step-tip">
+                    <span>💡</span>
+                    <span>
+                        Pro tip: Don’t try to master everything at once. Pick <strong>one
+                            step per outing</strong> to focus on (gear, casting, or water reading).
+                    </span>
+                </div>
+            </section>
+
+            <!-- TRAIL MAP: CLICKABLE CARDS -->
+            <section id="trail-map">
+                <h2><span>🗺️</span>Trail Map: Choose Your Next Stop</h2>
+                <p class="section-tagline">
+                    Each card is a “trail sign” — click any of them to jump to the matching
+                    part of the guide.
+                </p>
+
+                <div class="trail-map">
+                    <a href="#gear" class="trail-card">
+                        <span class="badge">Start here</span>
+                        <h3><span>🎒</span>Pack Your Gear</h3>
+                        <p>
+                            Rod weight, line, flies, and a minimalist river kit that fits in a
+                            small sling pack.
+                        </p>
+                    </a>
+
+                    <a href="#knots" class="trail-card">
+                        <span class="badge">5 min</span>
+                        <h3><span>🪢</span>Learn 2 Knots</h3>
+                        <p>
+                            Tie your fly on securely and connect leader to tippet without
+                            overcomplicating things.
+                        </p>
+                    </a>
+
+                    <a href="#casting" class="trail-card">
+                        <span class="badge">Practice</span>
+                        <h3><span>🌀</span>Dial In Your Cast</h3>
+                        <p>
+                            Understand the basic 10-to-2 casting motion and how to stop the
+                            rod to form loops.
+                        </p>
+                    </a>
+
+                    <a href="#water-reading" class="trail-card">
+                        <span class="badge">Rivercraft</span>
+                        <h3><span>🌊</span>Read the Water</h3>
+                        <p>
+                            Spot where trout actually hold, so you’re not just casting to the
+                            pretty water.
+                        </p>
+                    </a>
+
+                    <a href="#practice-plan" class="trail-card">
+                        <span class="badge">Game plan</span>
+                        <h3><span>📆</span>2-Hour River Session</h3>
+                        <p>
+                            A simple, repeatable routine for your first few trips that keeps
+                            you moving and learning.
+                        </p>
+                    </a>
+
+                    <a href="#resources" class="trail-card">
+                        <span class="badge">Level up</span>
+                        <h3><span>📚</span>Extra Help & Links</h3>
+                        <p>
+                            Beginner-friendly videos, printable checklists, and a quick
+                            etiquette refresher.
+                        </p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- GEAR & KNOTS -->
+            <section id="gear">
+                <div class="two-col">
+                    <div>
+                        <h2><span>🎒</span>Gear: What You Actually Need</h2>
+                        <p class="section-tagline">
+                            Mountains, forests, rivers — keep your setup simple so you can
+                            focus on the cast, not the catalog.
+                        </p>
+
+                        <div class="chip-row">
+                            <div class="chip"><span>⛰️</span> 9 ft, 5-weight rod</div>
+                            <div class="chip"><span>🧵</span> Floating weight-forward line</div>
+                            <div class="chip"><span>🎣</span> Small box of dries & nymphs</div>
+                        </div>
+
+                        <ul class="checklist">
+                            <li><strong>Fly rod & reel</strong> – a 9 ft, 5-weight combo covers most trout streams.</li>
+                            <li><strong>Fly line</strong> – floating, weight-forward line matched to your rod weight.
+                            </li>
+                            <li><strong>Leader & tippet</strong> – a 9 ft 4X leader plus some 4X or 5X tippet.</li>
+                            <li><strong>Flies</strong> – a small mix: dry flies, nymphs, and maybe 1–2 streamers.</li>
+                            <li><strong>Tools</strong> – nippers, forceps, and a small fly box.</li>
+                            <li><strong>Waders/boots or wet-wading shoes</strong> depending on water temp.</li>
+                            <li><strong>Net (optional, but nice)</strong> – easier on fish and easier on you.</li>
+                        </ul>
+                        <p class="sub-note">
+                            Keep it light. If it doesn’t fit in a small day-pack or sling,
+                            you probably don’t need it yet.
+                        </p>
+
+                        <div class="note-box">
+                            <strong>Safety note:</strong> Always bring a small water bottle,
+                            a snack, and let someone know what river or general area
+                            you’re fishing, especially in remote mountain country.
+                        </div>
+                    </div>
+
+                    <div id="knots">
+                        <h2><span>🪢</span>Knots: Just Two to Get Going</h2>
+                        <p class="section-tagline">
+                            You don’t need a whole knot encyclopedia. Master these first.
+                        </p>
+
+                        <ul class="checklist">
+                            <li>
+                                <strong>Improved clinch knot</strong> – ties your fly to your
+                                tippet. Strong, simple, and used constantly.
+                            </li>
+                            <li>
+                                <strong>Loop-to-loop connection</strong> – often used to connect
+                                fly line to leader (many lines/leaders come with loops built in).
+                            </li>
+                        </ul>
+
+                        <div class="resource-card" style="margin-top:0.9rem;">
+                            <h3><span>🎞️</span>Practice on the couch</h3>
+                            <p>
+                                Grab a piece of bright paracord or thick string and “tie” along
+                                with a short knot video. Re-tie each knot five times in a row
+                                without looking up.
+                            </p>
+                            <div class="resource-links" style="margin-top:0.5rem;">
+                                <a href="#resources">
+                                    <span>➡️</span>
+                                    <span>Jump to beginner-friendly video links</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CASTING & READING WATER -->
+            <section id="casting">
+                <div class="two-col">
+                    <div>
+                        <h2><span>🌀</span>Casting: The Forest-Side Warmup</h2>
+                        <p class="section-tagline">
+                            Before you’re in the river, you’re in a park, field, or backyard
+                            pretending the grass is a crystal-clear mountain stream.
+                        </p>
+
+                        <ul class="checklist">
+                            <li>
+                                <strong>Grip:</strong> Hold the rod like you’d hold a small
+                                hammer — firm but relaxed.
+                            </li>
+                            <li>
+                                <strong>Stance:</strong> Feet shoulder-width apart, facing your
+                                “target” (a leaf or stick you pick on the grass).
+                            </li>
+                            <li>
+                                <strong>10 & 2 motion:</strong> Imagine your rod tip moving
+                                between 10 o’clock and 2 o’clock on a clock face.
+                            </li>
+                            <li>
+                                <strong>Smooth acceleration, crisp stop:</strong> Start slow,
+                                speed up, then stop the rod tip firmly to form the loop.
+                            </li>
+                            <li>
+                                <strong>Let the line unroll:</strong> Wait until the line almost
+                                straightens behind you, then start your forward cast.
+                            </li>
+                        </ul>
+
+                        <div class="note-box">
+                            <strong>Fun game:</strong> Place 3–4 “targets” (sticks, cones,
+                            leaves) on the grass and try to land your yarn or fly within a
+                            hula-hoop sized circle around each. Count how many “on target”
+                            casts you can do in a row.
+                        </div>
+                    </div>
+
+                    <div id="water-reading">
+                        <h2><span>🌊</span>Reading Water: Where Trout Actually Live</h2>
+                        <p class="section-tagline">
+                            Instead of “random river casting,” you’re now “hunting likely
+                            holding water.”
+                        </p>
+
+                        <ul class="checklist">
+                            <li>
+                                <strong>Riffles:</strong> Shallow, choppy water with rocks.
+                                Like a conveyor belt of food; trout often sit just below these.
+                            </li>
+                            <li>
+                                <strong>Seams:</strong> The visible “line” where fast and slow
+                                currents meet. Trout sit in the softer water and grab food
+                                drifting by.
+                            </li>
+                            <li>
+                                <strong>Pools:</strong> Deeper, slower sections where trout can
+                                rest, especially in bright sun or low water.
+                            </li>
+                            <li>
+                                <strong>Structure:</strong> Rocks, logs, undercut banks —
+                                trout love cover and broken current.
+                            </li>
+                        </ul>
+
+                        <p class="sub-note">
+                            When you walk up to a new stretch of river, pause for 30–60
+                            seconds and <em>look</em> before you cast. Ask, “If I were a
+                            trout, where would I sit so I get food and don’t have to work
+                            too hard?”
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRACTICE PLAN / ON-RIVER ROUTINE -->
+            <section id="practice-plan">
+                <h2><span>📆</span>2-Hour Mountain River Session</h2>
+                <p class="section-tagline">
+                    A simple “first trip” game plan so you aren’t just wandering the river
+                    wondering what to do next.
+                </p>
+
+                <div class="timeline">
+                    <div class="timeline-step">
+                        <h3>Minutes 0–15: Rig up & observe</h3>
+                        <p>
+                            Park, breathe in the pine trees, and walk to the bank. Watch the
+                            water. Do you see bugs? Rising fish? Start with a simple dry fly
+                            or nymph that matches the general size & color of what you see.
+                        </p>
+                        <span class="time-tag">Trail marker: Pick 1 stretch of river,
+                            not the entire canyon.</span>
+                    </div>
+
+                    <div class="timeline-step">
+                        <h3>Minutes 15–45: Short-range casting only</h3>
+                        <p>
+                            Stand close to the water and make casts no longer than 20–25
+                            feet. Focus on gentle landings and drag-free drifts in one riffle
+                            or seam.
+                        </p>
+                    </div>
+
+                    <div class="timeline-step">
+                        <h3>Minutes 45–75: Work upstream methodically</h3>
+                        <p>
+                            Take a few casts in each likely spot, then move 1–2 rod lengths
+                            upstream. Cover water instead of camping in one place all day.
+                        </p>
+                    </div>
+
+                    <div class="timeline-step">
+                        <h3>Minutes 75–105: Change one thing</h3>
+                        <p>
+                            If you’re not getting looks or strikes, change just one variable:
+                            fly pattern, depth, or drift angle. Avoid changing everything at
+                            once, or you won’t know what helped.
+                        </p>
+                    </div>
+
+                    <div class="timeline-step">
+                        <h3>Minutes 105–120: Wrap-up & “trail journal”</h3>
+                        <p>
+                            Before you leave, jot a few quick notes in your phone: what
+                            flies you used, where you saw fish, what worked, and what
+                            confused you. That’s how every trip becomes a mini lesson.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="note-box" style="margin-top:1.1rem;">
+                    <strong>Win condition for the day:</strong> Instead of “I have to
+                    catch fish,” try “I want 5 good drifts in a row” or “I want to feel
+                    my timing improve.” The fish are a bonus.
+                </div>
+            </section>
+
+            <!-- RESOURCES / CLICKABLE LINKS -->
+            <section id="resources">
+                <h2><span>📚</span>Extra Resources & Helpful Links</h2>
+                <p class="section-tagline">
+                    When you’re ready to wander a little farther down the trail, these
+                    types of resources are great next steps. Replace the example links
+                    with your favorite channels and local info.
+                </p>
+
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3><span>🎞️</span>Short Casting Videos</h3>
+                        <p>
+                            Quick visual reminders for grip, 10-to-2 motion, and forming
+                            loops.
+                        </p>
+                        <div class="resource-links">
+                            <a href="https://www.youtube.com/results?search_query=beginner+fly+casting" target="_blank">
+                                <span>📺</span>
+                                <span>Beginner fly casting search on YouTube</span>
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=roll+cast+for+beginners"
+                                target="_blank">
+                                <span>📺</span>
+                                <span>Roll cast for beginners</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3><span>📄</span>Printable Checklists</h3>
+                        <p>
+                            Turn this page into a packing & “on-river routine” checklist.
+                        </p>
+                        <div class="resource-links">
+                            <a href="#gear">
+                                <span>📝</span>
+                                <span>Revisit the gear list</span>
+                            </a>
+                            <a href="#practice-plan">
+                                <span>📝</span>
+                                <span>Revisit the 2-hour trip plan</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class='tableauPlaceholder' id='viz1765214475270' style='position: relative'><noscript><a
+                                href='#'><img alt='PlayerViz '
+                                    src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Jo&#47;JordanCareerScoring&#47;PlayerViz&#47;1_rss.png'
+                                    style='border: none' /></a></noscript><object class='tableauViz'
+                            style='display:none;'>
+                            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                            <param name='embed_code_version' value='3' />
+                            <param name='site_root' value='' />
+                            <param name='name' value='JordanCareerScoring&#47;PlayerViz' />
+                            <param name='tabs' value='no' />
+                            <param name='toolbar' value='yes' />
+                            <param name='static_image'
+                                value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Jo&#47;JordanCareerScoring&#47;PlayerViz&#47;1.png' />
+                            <param name='animate_transition' value='yes' />
+                            <param name='display_static_image' value='yes' />
+                            <param name='display_spinner' value='yes' />
+                            <param name='display_overlay' value='yes' />
+                            <param name='display_count' value='yes' />
+                            <param name='language' value='en-US' />
+                            <param name='filter'
+                                value='_gl=1*1ow71tu*_ga*MjAwMDcyMjY1OC4xNzU5ODQ1ODk3*_ga_8YLN0SNXVS*czE3NjUyMTQ0MDIkbzckZzEkdDE3NjUyMTQ0NTEkajYwJGwwJGgw*_gcl_au*OTcxODExNzk3LjE3NTk4NDU4OTcuODI0NzE5NDQyLjE3NjIxOTEyMzQuMTc2MjE5MTI4Mg..' />
+                        </object></div>
+                    <script
+                        type='text/javascript'>                    var divElement = document.getElementById('viz1765214475270'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '1600px'; vizElement.style.height = '1417px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+                    <div class="resource-card">
+                        <h3><span>🌲</span>Local Info & River Reports</h3>
+                        <p>
+                            Check conditions before you go: flows, closures, and recommended
+                            flies.
+                        </p>
+                        <div class="resource-links">
+                            <a href="https://www.google.com/search?q=fly+shop+near+me" target="_blank">
+                                <span>📍</span>
+                                <span>Find a local fly shop</span>
+                            </a>
+                            <a href="https://www.google.com/search?q=trout+river+flows+near+me" target="_blank">
+                                <span>📍</span>
+                                <span>Check river flows & conditions</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3><span>🤝</span>River Etiquette</h3>
+                        <p>
+                            Keep the vibe on the river as chill as the pine-scented air.
+                        </p>
+                        <div class="resource-links">
+                            <a href="https://www.google.com/search?q=fly+fishing+river+etiquette" target="_blank">
+                                <span>✅</span>
+                                <span>Basic fly fishing etiquette tips</span>
+                            </a>
+                            <a href="https://www.google.com/search?q=leave+no+trace+principles" target="_blank">
+                                <span>🍃</span>
+                                <span>Review Leave No Trace principles</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                <span>
+                    🎣 See you on the river — may your loops be tight and your drifts be
+                    drag-free.
+                </span>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
